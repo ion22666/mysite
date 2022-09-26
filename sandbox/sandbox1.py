@@ -85,3 +85,4 @@ class Numbers:
         
 
 a1 = Numbers.creare_obiect()
+a2 = Numbers.creare_obiect()
