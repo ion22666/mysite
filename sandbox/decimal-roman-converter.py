@@ -1,7 +1,5 @@
-from ast import Num, Pass
 from math import floor
-import numbers
-import re
+import string
 
 class Numbers:
     global roman_numerals,roman_numerals_combinations
@@ -23,9 +21,12 @@ class Numbers:
 
     def __init__(self ,decimal_form=None , roman_form=None ):
 
+        if type(decimal_form)==type("a"):
+            roman_form = decimal_form
+            decimal_form = None
+
         if not decimal_form and not roman_form:
-            print("e nevoie de cel putin o forma pentru a crea un numar (numarul a fot sters)")
-            del self
+            self = Numbers.creare_obiect()
 
         elif decimal_form and roman_form:
             self.decimal_form = decimal_form
@@ -57,15 +58,16 @@ class Numbers:
                 rest = rest - (catul * valoare)
                 if rest == 0:
                     break
-                
-        self.roman_form = roman_form
-        self.print_number_when_created()
+            self.roman_form = roman_form
+            self.print_number_when_created()
 
     def print_number_when_created(self):
-        print("a fost creat un numaru: /n")
-        for attr in self.__getattribute__:
-            print(getattr(self,attr),"\n")
-        print()
+        print("a fost creat un numaru: ",end="")
+        s = ""
+        for value in self.__dict__.values():
+           s+=str(value)+" / "
+        s= s[0:-2]
+        print(s)
 
     def creare_obiect():
         print("Acum creati un obiect(lasa gol daca nu stii):")
@@ -78,7 +80,6 @@ class Numbers:
             return Numbers(None,roman_form)
         print("aia e , daca nu stii numerele")
         return
-        
-        
 
-print(Numbers.__init__.__doc__)
+Numbers("VI")
+print(globals())
