@@ -22,8 +22,8 @@ class Numbers:
     def __init__(self ,decimal_form=None , roman_form=None ):
 
         if type(decimal_form)==type("a"):
-            roman_form = decimal_form
-            decimal_form = None
+            Numbers(None,decimal_form)
+            return
 
         if not decimal_form and not roman_form:
             self = Numbers.creare_obiect()
@@ -55,7 +55,7 @@ class Numbers:
             for litera,valoare in roman_numerals.items():
                 catul = (floor(rest/valoare))
                 roman_form += catul * litera
-                rest = rest - (catul * valoare)
+                rest -= (catul * valoare)
                 if rest == 0:
                     break
             self.roman_form = roman_form
@@ -65,8 +65,8 @@ class Numbers:
         print("a fost creat un numaru: ",end="")
         s = ""
         for value in self.__dict__.values():
-           s+=str(value)+" / "
-        s= s[0:-2]
+           s+= str(value) + " / "
+        s= s[0:-3]
         print(s)
 
     def creare_obiect():
@@ -80,6 +80,6 @@ class Numbers:
             return Numbers(None,roman_form)
         print("aia e , daca nu stii numerele")
         return
-
-Numbers("VI")
-print(globals())
+lista= [1999,"MXI",61,909,"CDXII","CMIV",123,642,"XXXIV"]
+for i in lista:
+    Numbers(i)

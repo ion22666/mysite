@@ -1,18 +1,12 @@
-class K:
-    def __init__(self,attr1=None):
-        if attr1:
-            self.attr1 = attr1
-            print(self,self.attr1)
-            return
-        else:
-            self = K.creare_obiect()
+class py_solution:
+    def roman_to_int(self, s):
+        rom_val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        int_val = 0
+        for i in range(len(s)):
+            if i > 0 and rom_val[s[i]] > rom_val[s[i - 1]]:
+                int_val += rom_val[s[i]] - 2 * rom_val[s[i - 1]]
+            else:
+                int_val += rom_val[s[i]]
+        return int_val
 
-    def creare_obiect():
-        print("Acum creati un obiect(lasa gol daca nu stii):")
-        attr1 = input("attr1: ")
-        if attr1:
-            return K(attr1)
-        print("aia e , daca nu stii numerele")
-        return
-
-print(type("h"))
+print(py_solution().roman_to_int('MCMXCIX'))
