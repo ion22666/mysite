@@ -1,2 +1,7 @@
-{{ question.question_text}} {{question.pub_date }}
-<a href="/polls/{{ question.id }}/vote">vote here</a>
+{% load static %}
+<link rel="stylesheet" href="{% static 'polls/detail.css' %}">
+
+<body>
+<a>{{ question.question_text}} {{question.pub_date }}</a>
+<a href="/polls/{{ question.id }}/vote" class="secundar">vote here</a>
+</body>
