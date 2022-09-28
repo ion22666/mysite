@@ -10,4 +10,4 @@ def generateParenthesis(n = 1,str="",openS=0,closeS=0):
         str+=")"
         generateParenthesis(n,str,openS,closeS+1)
         str=str[0:-1]
-generateParenthesis()
+generateParenthesis(9)
