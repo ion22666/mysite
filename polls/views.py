@@ -4,6 +4,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from .models import Question,Choice
 from django.template import loader
 from django.urls import reverse
+from . import forms
 # Create your views here.
 
 def index(request):
@@ -13,6 +14,27 @@ def index(request):
     'latest_question_list': latest_question_list,
     }
     return HttpResponse(template.render(context, request))
+
+
+
+
+
+def add_Question(request):
+    question_form = forms.QuestionForm
+    choice_form = forms.ChoiceForm
+    context = {'question_form':question_form,'choice_form':choice_form}
+    if request.method == 'POST':
+        question_form = forms.QuestionForm(request.POST)
+        choice_form = forms.ChoiceForm(request.POST)
+        if question_form.is_valid():
+            question_form.save()
+            #redirect('home') //redirect to any page you wish to send the user after registration
+            
+        if choice_form.is_valid():
+            choice_form.save()
+            #redirect('home') //redirect to any page you wish to send the user after registration
+            
+    return render(request, 'polls/polls-form.html', context)
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
