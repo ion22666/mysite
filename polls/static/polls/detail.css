@@ -1,5 +1,8 @@
+@font-face {font-family: "JosefinSans-Italic-VariableFont_wght";src: url("JosefinSans-Italic-VariableFont_wght.ttf");}
+
 body{
     background-color: crimson;
+    font-family:JosefinSans-Italic-VariableFont_wgh;
 }
 a{
     color:white;
