@@ -1,0 +1,25 @@
+
+{% block title %}
+Polls Form
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Add Question </h3>
+            <form action="" method='POST'>
+                {% csrf_token %}
+                {{question_form.as_p}}
+                <button type="submit" class="btn btn-primary btn-sm" value="">Save Question</button>
+            </form>
+            <h3>Add Choice </h3>
+            <form action="" method='POST'>
+                {% csrf_token %}
+                {{choice_form.as_p}}
+                <button type="submit" class="btn btn-primary btn-sm" value="">Save Choice</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
